@@ -15,7 +15,6 @@ namespace GestaoClientes.Domain.ValueObjetcs
             var apenasDigitos = Regex.Replace(valor, @"\D", "");
             if (apenasDigitos.Length != 14) throw new ExcecaoDomain("CNPJ deve conter 14 dígitos.");
 
-            // Aqui você poderia adicionar validação dos dígitos verificadores.
             Valor = apenasDigitos;
         }
 
