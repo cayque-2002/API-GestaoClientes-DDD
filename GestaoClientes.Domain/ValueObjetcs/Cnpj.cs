@@ -18,6 +18,15 @@ namespace GestaoClientes.Domain.ValueObjetcs
             Valor = apenasDigitos;
         }
 
-        public override string ToString() => Valor;
+        public override bool Equals(object obj)
+        {
+            if (obj is not Cnpj outro)
+                return false;
+
+            return Valor == outro.Valor;
+        }
+
+        public override int GetHashCode() => Valor.GetHashCode();
+
     }
 }
