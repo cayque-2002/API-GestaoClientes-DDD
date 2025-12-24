@@ -10,6 +10,7 @@ namespace GestaoClientes.Application.Interfaces
     {
         Task AdicionarAsync(Cliente cliente);
         Task<Cliente?> ObterPorIdAsync(Guid id);
+        Task<IEnumerable<Cliente>> ObterTodosAsync();
         Task<bool> ExisteCnpjAsync(Cnpj cnpj);
     }
 }

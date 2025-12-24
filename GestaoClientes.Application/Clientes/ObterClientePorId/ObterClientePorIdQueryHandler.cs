@@ -1,4 +1,5 @@
-﻿using GestaoClientes.Application.Interfaces;
+﻿using GestaoClientes.Application.DTOS;
+using GestaoClientes.Application.Interfaces;
 using GestaoClientes.Domain.Entidades;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,20 @@ namespace GestaoClientes.Application.Clientes.ObterClientePorId
             _repository = repository;
         }
 
-        public async Task<Cliente?> HandleAsync(ObterClientePorIdQuery query)
+        public async Task<ClienteDto?> HandleAsync(ObterClientePorIdQuery query)
         {
-            return await _repository.ObterPorIdAsync(query.ClienteId);
+            var cliente = await _repository.ObterPorIdAsync(query.ClienteId);
+
+            if (cliente is null)
+                return null;
+
+            return new ClienteDto
+            {
+                Id = cliente.Id,
+                NomeFantasia = cliente.NomeFantasia,
+                Cnpj = cliente.Cnpj.Valor,
+                Ativo = cliente.Ativo
+            };
         }
     }
 }

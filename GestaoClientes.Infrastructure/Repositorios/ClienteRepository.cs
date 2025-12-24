@@ -25,6 +25,11 @@ namespace GestaoClientes.Infrastructure.Repositorios
             return Task.FromResult(cliente);
         }
 
+        public Task<IEnumerable<Cliente>> ObterTodosAsync()
+        {
+            return Task.FromResult<IEnumerable<Cliente>>(_clientes);
+        }
+
         public Task<bool> ExisteCnpjAsync(Cnpj cnpj)
         {
             var existe = _clientes.Any(c => c.Cnpj.Equals(cnpj));
