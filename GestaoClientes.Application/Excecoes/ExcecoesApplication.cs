@@ -2,9 +2,9 @@ using System;
 
 namespace GestaoClientes.Application.Excecoes
 {
-    public class ExcecaoApplication : Exception
+    public class ExcecoesApplication : Exception
     {
-        public ExcecaoApplication(string message) : base(message) 
+        public ExcecoesApplication(string message) : base(message) 
         {
         }
         
